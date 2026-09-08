@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>AURORA-X1 :: Deep Space Exploration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============ BACKGROUND CANVAS ============ -->
+<canvas id="space-canvas"></canvas>
+
+<!-- ============ CINEMATIC INTRO ============ -->
+<section id="intro-screen" class="overlay-screen">
+  <div class="intro-stars" aria-hidden="true"></div>
+  <div class="intro-content">
+    <p class="intro-year">YEAR 2187</p>
+    <div class="intro-text" id="intro-text-block">
+      <p>Humanity has established its first deep-space exploration network.</p>
+      <p>72 hours ago, the exploration station <strong>Astra&#8209;9</strong> transmitted a final message:</p>
+      <p class="intro-quote">&ldquo;Something is moving beyond the Nox system.&rdquo;</p>
+      <p>Then the transmission stopped.</p>
+      <p>You are the pilot of the <strong>AURORA&#8209;X1</strong>.</p>
+      <p class="intro-mission">Find Astra&#8209;9. Discover what happened.<br/>Do not lose communication with Earth.</p>
+    </div>
+    <button id="begin-mission-btn" class="cta-button">BEGIN MISSION</button>
+  </div>
+</section>
+
+<!-- ============ CHAPTER COMPLETE SCREEN ============ -->
+<section id="chapter-screen" class="overlay-screen hidden">
+  <div class="chapter-content">
+    <p class="chapter-label" id="chapter-label">CHAPTER 01 COMPLETE</p>
+    <h1 class="chapter-title" id="chapter-title">THE SIGNAL</h1>
+    <button id="continue-btn" class="cta-button">CONTINUE</button>
+  </div>
+</section>
+
+<!-- ============ ENDING SCREEN ============ -->
+<section id="ending-screen" class="overlay-screen hidden">
+  <div class="chapter-content ending-content">
+    <p class="chapter-label" id="ending-label">MISSION COMPLETE</p>
+    <h1 class="chapter-title" id="ending-title">ENDING</h1>
+    <p class="ending-text" id="ending-text"></p>
+    <button id="restart-btn" class="cta-button">RESTART MISSION</button>
+  </div>
+</section>
+
+<!-- ============ MAIN HUD (visible during flight) ============ -->
+<div id="hud-root" class="hidden">
+
+  <!-- ---- TOP BAR ---- -->
+  <header id="top-bar" class="glass-panel">
+    <div class="top-left">
+      <span class="mission-title">AURORA&#8209;X1</span>
+      <span class="chapter-tag" id="chapter-tag">CHAPTER 01</span>
+    </div>
+    <div class="top-center">
+      <span class="signal-status" id="signal-status">SIGNAL: NOMINAL</span>
+    </div>
+    <div class="top-right">
+      <span class="comm-status" id="comm-status">EARTH LINK STABLE</span>
+      <button id="db-toggle-btn" class="icon-btn" title="Galactic Database">DATABASE</button>
+      <button id="sound-toggle-btn" class="icon-btn" title="Toggle Sound">🔊 SOUND: OFF</button>
+    </div>
+  </header>
+
+  <!-- ---- LEFT: MISSION PANEL ---- -->
+  <aside id="mission-panel" class="glass-panel side-panel left-panel">
+    <button class="panel-collapse-btn" data-target="mission-panel">MISSION ▾</button>
+    <div class="panel-body">
+      <h2 class="panel-heading">CURRENT MISSION</h2>
+      <p class="mission-name" id="mission-name">Locate Astra&#8209;9</p>
+      <ul id="objectives-list" class="objectives-list"></ul>
+      <h3 class="panel-subheading">DISCOVERY LOG</h3>
+      <ul id="discovery-list" class="discovery-list">
+        <li class="empty-note">No discoveries yet. Explore the galaxy.</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ---- RIGHT: RADAR / NAV / STATUS ---- -->
+  <aside id="right-panel" class="glass-panel side-panel right-panel">
+    <button class="panel-collapse-btn" data-target="right-panel">NAV / STATUS ▾</button>
+    <div class="panel-body">
+
+      <h2 class="panel-heading">RADAR</h2>
+      <div id="radar-wrap">
+        <canvas id="radar-canvas" width="220" height="220"></canvas>
+        <div class="radar-sweep"></div>
+      </div>
+      <div class="radar-legend">
+        <span><i class="dot dot-planet"></i>Planet</span>
+        <span><i class="dot
