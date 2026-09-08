@@ -94,4 +94,135 @@
       </div>
       <div class="radar-legend">
         <span><i class="dot dot-planet"></i>Planet</span>
-        <span><i class="dot
+        <span><i class="dot dot-star"></i>Star</span>
+        <span><i class="dot dot-station"></i>Station</span>
+        <span><i class="dot dot-anomaly"></i>Unknown</span>
+      </div>
+
+      <h2 class="panel-heading">NAVIGATION</h2>
+      <div class="nav-row"><span>DESTINATION</span><strong id="nav-destination">NONE SELECTED</strong></div>
+      <div class="nav-row"><span>DISTANCE</span><strong id="nav-distance">&mdash;</strong></div>
+      <div class="nav-row"><span>COORDINATES</span><strong id="nav-coords">0000, 0000</strong></div>
+      <div class="nav-arrow-wrap"><div id="nav-arrow">▲</div></div>
+
+      <h2 class="panel-heading">SHIP STATUS</h2>
+      <div class="status-bar-row">
+        <span>HULL</span>
+        <div class="bar"><div class="bar-fill hull-fill" id="hull-fill"></div></div>
+        <strong id="hull-val">100%</strong>
+      </div>
+      <div class="status-bar-row">
+        <span>SHIELD</span>
+        <div class="bar"><div class="bar-fill shield-fill" id="shield-fill"></div></div>
+        <strong id="shield-val">100%</strong>
+      </div>
+      <div class="status-bar-row">
+        <span>FUEL</span>
+        <div class="bar"><div class="bar-fill fuel-fill" id="fuel-fill"></div></div>
+        <strong id="fuel-val">87%</strong>
+      </div>
+      <div class="status-bar-row">
+        <span>ENERGY</span>
+        <div class="bar"><div class="bar-fill energy-fill" id="energy-fill"></div></div>
+        <strong id="energy-val">94%</strong>
+      </div>
+      <div class="nav-row"><span>ENGINE</span><strong id="engine-status">IDLE</strong></div>
+    </div>
+  </aside>
+
+  <!-- ---- BOTTOM BAR ---- -->
+  <footer id="bottom-bar" class="glass-panel">
+    <div class="bottom-left">
+      <span class="control-hint">W/S THRUST&nbsp;&nbsp;A/D TURN&nbsp;&nbsp;SPACE BOOST&nbsp;&nbsp;E SCAN&nbsp;&nbsp;M MAP</span>
+    </div>
+    <div class="bottom-center">
+      <span class="speed-readout">SPEED <strong id="speed-val">000</strong> KM/S</span>
+    </div>
+    <div class="bottom-right">
+      <span id="dest-readout">DEST: <strong id="dest-name-val">&mdash;</strong> / <strong id="dest-dist-val">&mdash;</strong></span>
+    </div>
+  </footer>
+
+  <!-- ---- MOBILE TOUCH CONTROLS ---- -->
+  <div id="touch-controls">
+    <div class="touch-dpad">
+      <button class="touch-btn" data-key="up">▲</button>
+      <div class="touch-row">
+        <button class="touch-btn" data-key="left">◀</button>
+        <button class="touch-btn" data-key="down">▼</button>
+        <button class="touch-btn" data-key="right">▶</button>
+      </div>
+    </div>
+    <div class="touch-actions">
+      <button class="touch-btn touch-action" data-key="scan">SCAN</button>
+      <button class="touch-btn touch-action" data-key="boost">BOOST</button>
+      <button class="touch-btn touch-action" data-key="map">MAP</button>
+    </div>
+  </div>
+
+  <!-- ---- TARGET RETICLE / PROXIMITY PROMPT ---- -->
+  <div id="proximity-prompt" class="hidden">
+    <span id="proximity-name">OBJECT</span>
+    <span class="proximity-hint">TAP TO EXAMINE &middot; E TO SCAN</span>
+  </div>
+
+  <!-- ---- NOTIFICATIONS ---- -->
+  <div id="notification-stack"></div>
+
+  <!-- ---- INCOMING TRANSMISSION BANNER ---- -->
+  <div id="transmission-banner" class="hidden">
+    <p class="transmission-label" id="transmission-label">INCOMING TRANSMISSION</p>
+    <p class="transmission-text" id="transmission-text"></p>
+  </div>
+
+  <!-- ---- WARNING OVERLAY (Nox instability) ---- -->
+  <div id="warning-overlay" class="hidden">
+    <p id="warning-text">WARNING — NAVIGATION SYSTEM INSTABILITY</p>
+  </div>
+
+</div>
+
+<!-- ============ OBJECT INFO PANEL (modal) ============ -->
+<div id="object-panel" class="glass-panel modal-panel hidden">
+  <div class="object-panel-header">
+    <span class="object-type" id="object-type">TYPE</span>
+    <button id="object-close-btn" class="icon-btn small">CLOSE ✕</button>
+  </div>
+  <h2 id="object-name">NAME</h2>
+  <p id="object-description"></p>
+  <div class="object-stats" id="object-stats"></div>
+  <div class="object-fact" id="object-fact"></div>
+  <div class="object-actions">
+    <button id="object-scan-btn" class="cta-button small">SCAN</button>
+    <button id="object-travel-btn" class="cta-button small secondary">SET AS DESTINATION</button>
+  </div>
+  <div id="scan-readout" class="scan-readout hidden"></div>
+</div>
+
+<!-- ============ GALACTIC DATABASE (modal) ============ -->
+<div id="database-panel" class="glass-panel modal-panel hidden">
+  <div class="object-panel-header">
+    <span class="object-type">GALACTIC DATABASE</span>
+    <button id="db-close-btn" class="icon-btn small">CLOSE ✕</button>
+  </div>
+  <div id="database-tabs"></div>
+  <div id="database-entries"></div>
+</div>
+
+<!-- ============ FINAL CHOICE PANEL (modal) ============ -->
+<div id="choice-panel" class="glass-panel modal-panel hidden">
+  <div class="object-panel-header">
+    <span class="object-type">FINAL DECISION</span>
+  </div>
+  <h2 id="choice-title">THE UNKNOWN</h2>
+  <p id="choice-description"></p>
+  <div class="choice-actions">
+    <button class="cta-button choice-btn" data-choice="escape">ESCAPE NOX</button>
+    <button class="cta-button choice-btn secondary" data-choice="investigate">INVESTIGATE THE UNKNOWN</button>
+    <button class="cta-button choice-btn secondary" data-choice="transmit">TRANSMIT DISCOVERY TO EARTH</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
